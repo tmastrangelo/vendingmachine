@@ -1,0 +1,25 @@
+
+   else if (button_stateA == HIGH && button_stateB == LOW)
+    {
+      Serial.println("Vending Soda");
+      digitalWrite(greenled, HIGH);
+      delay(1000);
+      digitalWrite(greenled, LOW);
+    }
+
+    else if (button_stateA == LOW && button_stateB == HIGH)
+      {
+        Serial.println("Vending water");
+        digitalWrite(greenled, HIGH);
+        delay(1000);
+        digitalWrite(greenled, LOW);
+      }
+
+    else if (button_stateA == HIGH && button_stateB == HIGH)
+      {
+        Serial.println("Product not available");
+        digitalWrite(redled, HIGH);
+        delay(1000);
+        digitalWrite(redled, LOW); 
+      }
+}
