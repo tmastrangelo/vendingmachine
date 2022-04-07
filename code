@@ -1,3 +1,46 @@
+//#include <Wire.h>
+#include "LiquidCrystal_I2C.h"
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+int buttonA = 2;
+int buttonB = 3;
+int greenled = 4;
+int redled = 5;
+int button_stateA = 0;
+int button_stateB = 0;
+
+
+void setup() {
+  // put your setup code here, to run once:
+//setup lights
+  lcd.init();
+  lcd.backlight();
+
+pinMode(greenled, OUTPUT);
+pinMode(redled, OUTPUT);
+
+//setup buttons
+Serial.begin(9600);
+pinMode(buttonA, INPUT);
+pinMode(buttonB, INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  lcd.setCursor(3, 0); // set the cursor to column 3, line 0
+  lcd.print("Hello GeeekPi");  // Print a message to the LCD
+  
+  lcd.setCursor(2, 1); // set the cursor to column 2, line 1
+  lcd.print("hello world");  // Print a message to the LCD.
+  
+  button_stateA = digitalRead(buttonA);
+  button_stateB = digitalRead(buttonB);
+
+  if (button_stateA == LOW && button_stateB == LOW)
+    {
+      Serial.print("Waiting...");
+    }
 
    else if (button_stateA == HIGH && button_stateB == LOW)
     {
